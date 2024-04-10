@@ -34,54 +34,58 @@ A classe `Database` oferece métodos para realizar as seguintes operações bás
 ### Select
 
 ```php
-`<?php
+<?php
 // Selecionar todos os registros da tabela "users"
 $result = $db->select('users');
 print_r($result);
-?>`
+?>```
 
 ### Insert
 
 ```php
-`<?php
+<?php
 // Inserir um novo registro na tabela "products"
 $data = [
     'name' => 'Produto A',
     'price' => 19.99,
 ];
 $db->insert('products', $data);
-?>` 
+?>
+```
 
 ### Update
 
 ```php
-`<?php
+<?php
 // Atualizar o preço do produto com ID 1 para 29.99 na tabela "products"
 $data = [
     'price' => 29.99,
 ];
 $db->update('products', $data, ['id' => 1]);
-?>` 
+?>
+```
 
 ### Delete
 
 ```php
-`<?php
+<?php
 // Excluir o registro com ID 2 da tabela "orders"
 $db->delete('orders', ['id' => 2]);
-?>` 
+?>
+```
 
 ### Has
 
 ```php
-`<?php
+<?php
 // Verificar se há registros na tabela "customers" com nome "John"
 if ($db->has('customers', ['name' => 'John'])) {
     echo "John está na lista de clientes.";
 } else {
     echo "John não está na lista de clientes.";
 }
-?>` 
+?>
+```
 
 ## Operações Avançadas
 
@@ -90,38 +94,41 @@ A classe `Database` também oferece métodos para operações mais avançadas:
 ### Limit e Sort
 
 ```php
-`<?php
+<?php
 // Selecionar os 10 primeiros registros da tabela "products" ordenados por preço decrescente
 $result = $db->select('products', '*', [], 10)->sort('price', 'DESC');
 print_r($result);
-?>` 
+?>
+``` 
 
 ### Where com Condições Personalizadas
 
 ```php
-`<?php
+<?php
 // Selecionar registros da tabela "orders" com valor total superior a 100
 $result = $db->select('orders', '*', ['total[>]' => 100]);
 print_r($result);
-?>` 
+?>
+``` 
 
 ## Debug
 
 A depuração (debug) pode ser ativada para visualizar as consultas SQL geradas:
 
 ```php
-`<?php
+<?php
 // Ativar o modo de debug
 $db->debug();
 
 // Realizar uma consulta
 $result = $db->select('products', '*', ['category' => 'Electronics']);
-?>` 
+?>
+```
 
 ## Exemplo Completo
 
 ```php
-`<?php
+<?php
 require_once 'Database.php';
 
 $config = [
@@ -136,5 +143,6 @@ $db = new Database($config);
 // Exemplo de utilização
 $result = $db->select('products', '*', ['category' => 'Electronics']);
 print_r($result);
-?>`
+?>
+````
 
